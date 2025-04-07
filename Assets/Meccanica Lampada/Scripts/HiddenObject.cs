@@ -19,11 +19,11 @@ public class HiddenObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameObject.FindAnyObjectByType<InputBase>().localLightOn)
+        if(!GameObject.FindAnyObjectByType<LampSkill>().localLightOn)
         {
             ChangeMaterial(false);
         }
-        GetComponent<MeshCollider>().enabled = GameObject.FindAnyObjectByType<InputBase>().localLightOn;
+        GetComponent<MeshCollider>().enabled = GameObject.FindAnyObjectByType<LampSkill>().localLightOn;
     }
 
     public void ChangeMaterial(bool mode)

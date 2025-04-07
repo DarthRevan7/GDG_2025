@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
   m_Layer: 0
-  m_Name: Ennvironment_Light
+  m_Name: Environment_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,6 +669,7 @@ GameObject:
   - component: {fileID: 1936728173}
   - component: {fileID: 1936728172}
   - component: {fileID: 1936728176}
+  - component: {fileID: 1936728177}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -786,13 +787,25 @@ MonoBehaviour:
   backward: 115
   right: 100
   left: 97
+--- !u!114 &1936728177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936728170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60614645800fbe94d9fbf5281ca76545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ambiente: {fileID: 410087040}
   localLight: {fileID: 1782190174}
   localIllumination: 5
   environmentLightIntensityStart: 0
-  environmentLightIntensity: 0.2
+  environmentLightIntensity: 0
   localLightOn: 0
-  localLightRadius: 0
+  localLightRadius: 3
   lightKey: 102
 --- !u!1001 &5840998482020481612
 PrefabInstance:

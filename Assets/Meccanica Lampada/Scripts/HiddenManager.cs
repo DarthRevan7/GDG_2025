@@ -14,10 +14,10 @@ public class HiddenManager : MonoBehaviour
     private void DiscoveryMode()
     {
         //Se non è attiva la modalità di scoperta, allora ritorno.
-        if(!player.GetComponent<InputBase>().localLightOn)
+        if(!player.GetComponent<LampSkill>().localLightOn)
             return;
 
-        InputBase inputBase = player.GetComponent<InputBase>();
+        LampSkill inputBase = player.GetComponent<LampSkill>();
         //Casto una sfera per capire che oggetti trovo nel raggio del punto luce
         Collider[] colliders = Physics.OverlapSphere(player.position, inputBase.localLightRadius);
         Debug.Log("collider.Count = " + colliders.Length.ToString());

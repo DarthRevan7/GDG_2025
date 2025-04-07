@@ -8,31 +8,9 @@ public class InputBase : MonoBehaviour
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private KeyCode forward, backward, right, left;
 
-    //Illuminazione
-    [SerializeField] private Light ambiente, localLight;
-    [SerializeField] private float localIllumination = 5f;
-    [SerializeField] private float environmentLightIntensityStart, environmentLightIntensity;
-    public bool localLightOn = false;
-    public float localLightRadius;
-    [SerializeField] private KeyCode lightKey;
+    
 
-    private void HandleIlluminationSkill()
-    {
-        if(Input.GetKeyDown(lightKey))
-        {
-            localLightOn = !localLightOn;
-            if(localLightOn)
-            {
-                ambiente.intensity = environmentLightIntensity;
-                localLight.intensity = localIllumination;
-            }
-            else
-            {
-                ambiente.intensity = environmentLightIntensityStart;
-                localLight.intensity = 0f;
-            }
-        }
-    }    
+        
 
 
     //Movimento base
@@ -60,11 +38,7 @@ public class InputBase : MonoBehaviour
         transform.Translate(movementVector * movementSpeed * Time.deltaTime);
     }
 
-    void Awake()
-    {
-        environmentLightIntensityStart = ambiente.intensity;
-        localLightRadius = localLight.range;
-    }
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,6 +50,5 @@ public class InputBase : MonoBehaviour
     void Update()
     {
         HandleInputOld();
-        HandleIlluminationSkill();
     }
 }
