@@ -4,7 +4,7 @@ using UnityEngine;
 public class InputBase : MonoBehaviour
 {
     //Movimento
-    [SerializeField] private Vector3 movementVector;
+    public Vector3 movementVector;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private KeyCode forward, backward, right, left;
 
