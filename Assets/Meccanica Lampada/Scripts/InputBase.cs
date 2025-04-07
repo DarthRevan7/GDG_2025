@@ -35,6 +35,10 @@ public class InputBase : MonoBehaviour
         }
 
         movementVector.Normalize();
+        if(movementVector != Vector3.zero)
+        {
+            transform.forward = movementVector;
+        }
         transform.Translate(movementVector * movementSpeed * Time.deltaTime);
     }
 
