@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Lava
+  - SafeZone
   layers:
   - Default
   - TransparentFX
