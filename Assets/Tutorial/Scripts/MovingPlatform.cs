@@ -62,19 +62,27 @@ public class MovingPlatform : MonoBehaviour
     // When the player is on the platform, the parent is changed
     // in order to make the player move with the platform
     // If you delete this, the platform will move and the player will stay still and fall off.
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag.Equals("Player"))
+        if(other.gameObject.tag.Equals("Player"))
         {
-            collision.gameObject.transform.parent = this.transform;
+            other.gameObject.transform.parent = this.transform;
+        }
+    }
+    // Same as before: if the player stays on the platform, the parent is the platform.
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag.Equals("Player"))
+        {
+            other.gameObject.transform.parent = this.transform;
         }
     }
     // Serves the opposite purpose: player parent is nullified so it can move independently
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit(Collider other)
     {
-        if(collision.gameObject.tag.Equals("Player"))
+        if(other.gameObject.tag.Equals("Player"))
         {
-            collision.gameObject.transform.parent = null;
+            other.gameObject.transform.parent = null;
         }
     }
     void Awake()

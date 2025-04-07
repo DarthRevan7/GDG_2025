@@ -32,6 +32,22 @@ public class Jump : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        // If the other object is a safe zone, just set isgrounded to true
+        if(other.gameObject.tag.Equals(tagSafeZone))
+        {
+            isGrounded = true;
+        }
+        // If the other object is not a safe zone then the player must DIE.
+        else if(other.gameObject.tag.Equals(tagDangerZone))
+        {
+            Debug.Log("DEAD!");
+            // Delete next instruction later
+            isGrounded = true;
+        }
+    }
+
     private void JumpHandling()
     {
         // If the player wants to jump and the character is grounded
