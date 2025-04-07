@@ -17,7 +17,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private bool goForward = true, canTranslate = true;
 
 
-
+    // Wait for the next movement; after this negates the value of goForward,
+    //  reset the actualDistance and set canTranslate as true.
     IEnumerator WaitingForNextTrip()
     {
         yield return new WaitForSeconds(waitingTime);
@@ -25,21 +26,25 @@ public class MovingPlatform : MonoBehaviour
         actualDistance = 0;
         canTranslate = true;
     }
-
+    // Translates the platform based on the positive direction
     private void TranslateForward()
     {
+        // Builds the translation vector
         Vector3 translation = direction * speed * Time.deltaTime;
+        // Translates the object if the actualDistance is less then the final translation distance
         if(actualDistance <= distance)
         {
+            actualDistance += translation.magnitude;
             transform.Translate(translation);
         }
+        // Otherwise stop the object's translation and starts the coroutine for the waiting time
         else
         {
             canTranslate = false;
             StartCoroutine(WaitingForNextTrip());
         }
-        actualDistance += translation.magnitude;
     }
+    // Same as before, just translates on the opposite direction
     private void TranslateBackwards()
     {
         Vector3 translation = -direction * speed * Time.deltaTime;
@@ -54,7 +59,9 @@ public class MovingPlatform : MonoBehaviour
         }
         actualDistance += translation.magnitude;
     }
-
+    // When the player is on the platform, the parent is changed
+    // in order to make the player move with the platform
+    // If you delete this, the platform will move and the player will stay still and fall off.
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag.Equals("Player"))
@@ -62,6 +69,7 @@ public class MovingPlatform : MonoBehaviour
             collision.gameObject.transform.parent = this.transform;
         }
     }
+    // Serves the opposite purpose: player parent is nullified so it can move independently
     void OnCollisionExit(Collision collision)
     {
         if(collision.gameObject.tag.Equals("Player"))
@@ -71,6 +79,7 @@ public class MovingPlatform : MonoBehaviour
     }
     void Awake()
     {
+        // Assign the initial direction for the moving platform
         switch(positiveDirection)
         {
             case MovementSelection.UP:
