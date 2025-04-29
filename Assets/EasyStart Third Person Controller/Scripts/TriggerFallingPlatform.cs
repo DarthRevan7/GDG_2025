@@ -9,6 +9,7 @@ public class TriggerFallingPlatform : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             fallingPlatform.TriggerFall();
+            
         }
     }
 }

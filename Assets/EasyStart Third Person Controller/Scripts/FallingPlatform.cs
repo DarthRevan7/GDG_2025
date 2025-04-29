@@ -3,6 +3,7 @@ using UnityEngine;
 public class FallingPlatform : MonoBehaviour
 {
     public float delayBeforeFall = 0.5f;
+    public float destroyDelayAfterFall = 2f; // ⬅️ Nuovo parametro per quanto tempo aspettare prima di distruggere
     private Rigidbody rb;
     private bool hasTriggered = false;
 
@@ -24,7 +25,6 @@ public class FallingPlatform : MonoBehaviour
     void DropPlatform()
     {
         rb.isKinematic = false;
+        Destroy(gameObject, destroyDelayAfterFall); // ⬅️ Distruggi la piattaforma dopo X secondi
     }
 }
-
-
