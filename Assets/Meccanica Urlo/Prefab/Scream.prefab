@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f58dc163ab6f54ab24aaa43569a8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screamDistanceMax: 5
+  screamDistanceMax: 100
   screamDistance: 0
-  screamSpeed: 1
+  screamSpeed: 15

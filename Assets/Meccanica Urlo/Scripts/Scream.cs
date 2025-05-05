@@ -22,7 +22,7 @@ public class Scream : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * screamSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * screamSpeed * Time.deltaTime);
         screamDistance += (transform.forward * screamSpeed * Time.deltaTime).magnitude;
         if(screamDistance >= screamDistanceMax)
         {

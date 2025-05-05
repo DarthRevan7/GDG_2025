@@ -5,8 +5,9 @@ public class InputBase : MonoBehaviour
 {
     //Movimento
     public Vector3 movementVector;
-    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float movementSpeed = 5f, rotationSpeed = 5f;
     [SerializeField] private KeyCode forward, backward, right, left;
+    [SerializeField] private KeyCode leftRotation, rightRotation;
 
     
 
@@ -27,18 +28,22 @@ public class InputBase : MonoBehaviour
         }
         if(Input.GetKey(left))
         {
-            movementVector -= new Vector3(1,0,0);
+            movementVector += new Vector3(-1,0,0);
         }
         if(Input.GetKey(backward))
         {
-            movementVector -= new Vector3(0,0,1);
+            movementVector += new Vector3(0,0,-1);
         }
 
         movementVector.Normalize();
-        if(movementVector != Vector3.zero)
-        {
-            transform.forward = movementVector;
+
+        if(Input.GetKey(leftRotation)) {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
+        else if(Input.GetKey(rightRotation)) {
+            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
+        }
+        
         transform.Translate(movementVector * movementSpeed * Time.deltaTime);
     }
 
