@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class PlatformMoving : MonoBehaviour
 {
 
     enum MovementSelection
