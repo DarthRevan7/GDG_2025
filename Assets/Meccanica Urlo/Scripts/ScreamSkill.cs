@@ -8,6 +8,7 @@ public class ScreamSkill : MonoBehaviour
     [SerializeField] private KeyCode screamKey = KeyCode.R;
     [SerializeField] private bool canScream = true;
     [SerializeField] private GameObject screamPrefab, spawnScreamPoint;
+    [SerializeField] private string spawnScreamPointName = "ScreamSpawnPoint";
 
     private IEnumerator SpawnScream()
     {
@@ -31,7 +32,7 @@ public class ScreamSkill : MonoBehaviour
 
     void Awake()
     {
-        spawnScreamPoint = transform.Find("ScreamSpawnPoint").gameObject;
+        spawnScreamPoint = transform.Find(spawnScreamPointName).gameObject;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

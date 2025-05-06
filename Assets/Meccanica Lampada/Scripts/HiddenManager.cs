@@ -50,7 +50,7 @@ public class HiddenManager : MonoBehaviour
         hiddenObjects = GameObject.FindObjectsByType<HiddenObject>(FindObjectsSortMode.None).ToList<HiddenObject>();
         
         //Trovo il player gameobject
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
