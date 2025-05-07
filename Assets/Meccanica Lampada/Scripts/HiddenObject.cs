@@ -23,7 +23,7 @@ public class HiddenObject : MonoBehaviour
         {
             ChangeMaterial(false);
         }
-        GetComponent<MeshCollider>().enabled = GameObject.FindAnyObjectByType<LampSkill>().localLightOn;
+        GetComponent<Collider>().enabled = GameObject.FindAnyObjectByType<LampSkill>().localLightOn;
     }
 
     public void ChangeMaterial(bool mode)
