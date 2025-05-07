@@ -15,7 +15,7 @@ public class CollectableObject : MonoBehaviour
     }
 
     private void ObjectRotation() {
-        transform.Rotate(Vector3.up * 1.2f * Time.deltaTime);
+        transform.RotateAround(transform.position, Vector3.up, 1.2f * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)
