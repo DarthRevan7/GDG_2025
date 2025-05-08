@@ -320,15 +320,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4298152111567187403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f444db2edabd44f81c1fa3dcdfed0d, type: 3}
+  m_Script: {fileID: 11500000, guid: e16b6274e7f282349a22bc85e2b5d97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 0, y: 0, z: 0}
   movementSpeed: 5
-  forward: 119
-  backward: 115
-  right: 100
-  left: 97
+  rotationSpeed: 5
+  forward: 0
+  backward: 0
+  right: 0
+  left: 0
+  leftRotation: 0
+  rightRotation: 0
 --- !u!114 &4153300635897465353
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,15 +21,16 @@ public class Jump : MonoBehaviour
         // If the other object is a safe zone, just set isgrounded to true
         if(collision.gameObject.tag.Equals(tagSafeZone))
         {
-            isGrounded = true;
+            //Do nothing or just isgrounded = true.
         }
         // If the other object is not a safe zone then the player must DIE.
         else if(collision.gameObject.tag.Equals(tagDangerZone))
         {
             Debug.Log("DEAD!");
-            // Delete next instruction later
-            isGrounded = true;
+            //Take a life away from the player.
+            
         }
+        isGrounded = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -56,7 +57,7 @@ public class Jump : MonoBehaviour
             // Add a force to the rigidbody component. The force type is impulse
             // Then set isgrounded as false.
             Rigidbody rb = GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * jumpForce * rb.mass, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }

@@ -11,8 +11,8 @@ public class LampSkill : MonoBehaviour
     [SerializeField] private float environmentLightIntensityStart, environmentLightIntensity;
     public bool localLightOn = false;
     public float localLightRadius = 5f;
-    [SerializeField] private KeyCode lightKey;
-    [SerializeField] private string envLightName = "Environment_Light";
+    [SerializeField] private KeyCode lightKey = KeyCode.F;
+    [SerializeField] private string envLightName = "Directional Light";
     [SerializeField] private Light[] env_lights;
     [SerializeField] private List<float> envLightsStartIntensities;
 

@@ -5,9 +5,9 @@ public class InputBase : MonoBehaviour
 {
     //Movimento
     public Vector3 movementVector;
-    [SerializeField] private float movementSpeed = 5f, rotationSpeed = 5f;
-    [SerializeField] private KeyCode forward, backward, right, left;
-    [SerializeField] private KeyCode leftRotation, rightRotation;
+    [SerializeField] private float movementSpeed = 5f, rotationSpeed = 20f;
+    [SerializeField] private KeyCode forward = KeyCode.W, backward = KeyCode.S, right = KeyCode.D, left = KeyCode.A;
+    [SerializeField] private KeyCode leftRotation = KeyCode.Q, rightRotation = KeyCode.E;
 
     
 
@@ -37,10 +37,10 @@ public class InputBase : MonoBehaviour
 
         movementVector.Normalize();
 
-        if(Input.GetKey(leftRotation)) {
+        if(Input.GetKey(rightRotation)) {
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
-        else if(Input.GetKey(rightRotation)) {
+        else if(Input.GetKey(leftRotation)) {
             transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
         }
         
