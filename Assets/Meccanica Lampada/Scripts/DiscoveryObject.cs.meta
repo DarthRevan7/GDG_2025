@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c7e8d3e762d5ee2429fd9414b3e0a717
+guid: 988cabfcc6bb56c439cf6af37c119243
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - screamPrefab: {fileID: 7541812604661882318, guid: b07ee32426bb8c546bf03ff2649f3f62, type: 3}
-  - spawnScreamPoint: {instanceID: 0}
+  - trasparentMaterial: {fileID: 2100000, guid: f729f6f9a05b42243bf61bc93ec2e02a, type: 2}
+  - originalMaterial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

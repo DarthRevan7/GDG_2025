@@ -1,11 +1,11 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-public class HiddenManager : MonoBehaviour
+public class DiscoveryManager : MonoBehaviour
 {
 
-    [SerializeField] private List<HiddenObject> hiddenObjects;
+    [SerializeField] private List<DiscoveryObject> discoveryObjects;
 
     [SerializeField] private Transform player;
 
@@ -24,30 +24,27 @@ public class HiddenManager : MonoBehaviour
         
         foreach(Collider coll in colliders)
         {
-            // Debug.Log("Obj: " + coll.gameObject.name);
-            if(hiddenObjects.Contains(coll.gameObject.GetComponent<HiddenObject>()))
+            if(discoveryObjects.Contains(coll.gameObject.GetComponent<DiscoveryObject>()))
             {
-                Debug.Log("Find element in list");
-                HiddenObject element;
+                // Debug.Log("Find element in list");
+                DiscoveryObject element;
 
                 //Trova quel GameObject nella lista
-                element = hiddenObjects.Find(obj => obj.gameObject.GetInstanceID() == coll.gameObject.GetInstanceID());
+                element = discoveryObjects.Find(obj => obj.gameObject.GetInstanceID() == coll.gameObject.GetInstanceID());
                 if(element != null)
                 {
                     Debug.Log("element.name = " + element.gameObject.name);
                 }
-                //Attiva collider e ripristina materiale.
+                //Disattiva collider e ripristina materiale.
                 element.ChangeMaterial(true);
             }
         }
-
-
     }
 
     void Awake()
     {
         //Trovo gli oggetti da nascondere e li metto in una lista
-        hiddenObjects = GameObject.FindObjectsByType<HiddenObject>(FindObjectsSortMode.None).ToList<HiddenObject>();
+        discoveryObjects = GameObject.FindObjectsByType<DiscoveryObject>(FindObjectsSortMode.None).ToList();
         
         //Trovo il player gameobject
         player = GameObject.FindWithTag("Player").transform;
