@@ -28,8 +28,7 @@ public class LampSkill : MonoBehaviour
         }
 
         localLight = GetComponentInChildren<Light>();
-        localLight.range = localLightRadius;
-        localLight.intensity = 0f;
+        localLight.enabled = false;
 
         if(env_lights.Length != 0) {
             envLightsStartIntensities = new List<float>();
@@ -61,13 +60,13 @@ public class LampSkill : MonoBehaviour
                 if(localLightOn)
                 {
                     ambiente.intensity = environmentLightIntensity;
-                    localLight.intensity = localIllumination;
+                    localLight.enabled = true;
                     bodyLights.Play();
                 }
                 else
                 {
                     ambiente.intensity = environmentLightIntensityStart;
-                    localLight.intensity = 0f;
+                    localLight.enabled = false;
                     bodyLights.Stop();
                     bodyLights.Clear();
                 }
@@ -78,7 +77,7 @@ public class LampSkill : MonoBehaviour
                     for(int i = 0; i < env_lights.Length; i++) {
                         env_lights[i].intensity = environmentLightIntensity;
                     }
-                    localLight.intensity = localIllumination;
+                    localLight.enabled = true;
                     bodyLights.Play();
                 }
                 else
@@ -86,7 +85,7 @@ public class LampSkill : MonoBehaviour
                     for(int i = 0; i < env_lights.Length; i++) {
                         env_lights[i].intensity = envLightsStartIntensities[i];
                     }
-                    localLight.intensity = 0f;
+                    localLight.enabled = false;
                     bodyLights.Stop();
                     bodyLights.Clear();
                 }
