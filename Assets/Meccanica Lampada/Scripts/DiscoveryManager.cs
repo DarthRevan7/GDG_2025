@@ -25,19 +25,6 @@ public class DiscoveryManager : MonoBehaviour
         foreach (Collider coll in colliders)
         {
 
-            Debug.Log("Processing collider on object: " + coll.gameObject.name); // Debug: Quale oggetto stiamo guardando ora
-
-            DiscoveryObject discoveredObj = coll.gameObject.GetComponent<DiscoveryObject>();
-
-            if (discoveredObj == null)
-            {
-                Debug.Log("- " + coll.gameObject.name + " does NOT have a DiscoveryObject component."); // Debug: QUESTO oggetto non ha lo script
-            }
-            else
-            {
-                Debug.Log("- " + coll.gameObject.name + " DOES have a DiscoveryObject component."); // Debug: QUESTO oggetto ha lo script
-            }
-
             // Debug.Log("Obj: " + coll.gameObject.name);
             if (discoveryObjects.Contains(coll.gameObject.GetComponent<DiscoveryObject>()))
             {

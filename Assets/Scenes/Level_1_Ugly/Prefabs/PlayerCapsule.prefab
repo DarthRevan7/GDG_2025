@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementVector: {x: 0, y: 0, z: 0}
   movementSpeed: 5
-  rotationSpeed: 20
+  rotationSpeed: 100
   forward: 119
   backward: 115
   right: 100
@@ -371,7 +371,7 @@ MonoBehaviour:
   environmentLightIntensityStart: 0
   environmentLightIntensity: 0
   localLightOn: 0
-  localLightRadius: 5
+  localLightRadius: 1.5
   lightKey: 102
   envLightName: Directional Light
   env_lights: []
