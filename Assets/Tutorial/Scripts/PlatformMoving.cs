@@ -64,25 +64,56 @@ public class PlatformMoving : MonoBehaviour
     // If you delete this, the platform will move and the player will stay still and fall off.
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag.Equals("Player"))
+        Debug.Log("Trigger moving platform entered");
+        
+        if (other.gameObject.tag.Equals("Player"))
         {
+            Vector3 playerWorldScaleBeforeParenting = other.gameObject.transform.lossyScale;
+            
+
             other.gameObject.transform.parent = this.transform;
+
+            Vector3 platformWorldScale = transform.lossyScale;
+
+            Vector3 requiredLocalScale = new Vector3(
+            playerWorldScaleBeforeParenting.x / platformWorldScale.x,
+            playerWorldScaleBeforeParenting.y / platformWorldScale.y,
+            playerWorldScaleBeforeParenting.z / platformWorldScale.z);
+
+            other.gameObject.transform.localScale = requiredLocalScale;
+
+            //other.gameObject.transform.localScale = Vector3.one;
         }
     }
     // Same as before: if the player stays on the platform, the parent is the platform.
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag.Equals("Player"))
+        Debug.Log("Trigger moving platform Staying");
+        if (other.gameObject.tag.Equals("Player"))
         {
+            Vector3 playerWorldScaleBeforeParenting = other.gameObject.transform.lossyScale;
+            
+
             other.gameObject.transform.parent = this.transform;
+
+            Vector3 platformWorldScale = transform.lossyScale;
+
+            Vector3 requiredLocalScale = new Vector3(
+            playerWorldScaleBeforeParenting.x / platformWorldScale.x,
+            playerWorldScaleBeforeParenting.y / platformWorldScale.y,
+            playerWorldScaleBeforeParenting.z / platformWorldScale.z);
+
+            other.gameObject.transform.localScale = requiredLocalScale;
         }
     }
     // Serves the opposite purpose: player parent is nullified so it can move independently
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag.Equals("Player"))
+        Debug.Log("Trigger moving platform exited");
+        if (other.gameObject.tag.Equals("Player"))
         {
             other.gameObject.transform.parent = null;
+            other.gameObject.transform.localScale = Vector3.one;
         }
     }
     void Awake()

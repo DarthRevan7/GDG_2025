@@ -28,7 +28,7 @@ public class HiddenManager : MonoBehaviour
             // Debug.Log("Obj: " + coll.gameObject.name);
             if (hiddenObjects.Contains(coll.gameObject.GetComponent<HiddenObject>()))
             {
-                Debug.Log("Find element in list");
+                // Debug.Log("Find element in list");
                 HiddenObject element;
 
                 //Trova quel GameObject nella lista
