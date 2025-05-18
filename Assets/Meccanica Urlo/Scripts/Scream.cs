@@ -33,12 +33,15 @@ public class Scream : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-
         if (explosion != null)
         {
             ParticleSystem ps = GameObject.Instantiate(explosion, collision.contacts[0].point, Quaternion.identity);
             Destroy(ps.gameObject, ps.main.duration);
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "Destructible")
+            {
+                Destroy(collision.gameObject);
+            }
         }
+        Destroy(gameObject);
     }
 }
