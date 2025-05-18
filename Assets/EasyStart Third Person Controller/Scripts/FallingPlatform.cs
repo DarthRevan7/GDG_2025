@@ -27,4 +27,6 @@ public class FallingPlatform : MonoBehaviour
         rb.isKinematic = false;
         Destroy(gameObject, destroyDelayAfterFall); // ⬅️ Distruggi la piattaforma dopo X secondi
     }
+
+    
 }
