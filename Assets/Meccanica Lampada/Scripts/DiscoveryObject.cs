@@ -7,11 +7,12 @@ public class DiscoveryObject : MonoBehaviour
     [SerializeField] private Material originalMaterial;
     [SerializeField] private float transparencyIndex = 0.55f;
     [SerializeField] private GameObject player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+
     void Start()
     {
-        originalMaterial = GetComponent<Renderer>().material;
-
+        originalMaterial = GetComponent<MeshRenderer>().material;
+        
         player = GameObject.FindGameObjectWithTag("Player");
         //Creo un materiale trasparente ad hoc.
         trasparentMaterial = new Material(originalMaterial);
@@ -26,28 +27,26 @@ public class DiscoveryObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Se il player non ha la skill attiva
-        if (!player.GetComponent<LampSkill>().localLightOn)
+        if (!GameObject.FindAnyObjectByType<LampSkill>().localLightOn)
         {
-            //Setta il materiale visibile
-            ChangeMaterial(false);
+            ChangeMaterial(true);
         }
-
-        //Il collider è attivo solo se la skill è disabilitata
-        GetComponent<Collider>().enabled = !GameObject.FindAnyObjectByType<LampSkill>().localLightOn;
+        // GetComponent<Collider>().enabled = !GameObject.FindAnyObjectByType<LampSkill>().localLightOn;
     }
 
     //Cambia materiale all'oggetto in modo che sia visibile o invisibile a seconda del booleano
     public void ChangeMaterial(bool mode)
     {
-        if (mode)
+        if (!mode)
         {
             GetComponent<MeshRenderer>().material = trasparentMaterial;
+            GetComponent<Collider>().enabled = false;
 
         }
         else
         {
             GetComponent<MeshRenderer>().material = originalMaterial;
+            GetComponent<Collider>().enabled = true;
         }
     }
 }
