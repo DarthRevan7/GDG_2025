@@ -24,14 +24,15 @@ public class DiscoveryManager : MonoBehaviour
         
         foreach(Collider coll in colliders)
         {
-            if(discoveryObjects.Contains(coll.gameObject.GetComponent<DiscoveryObject>()))
+            Debug.Log("Foreach colliders: " + colliders.Length.ToString());
+            if (discoveryObjects.Contains(coll.gameObject.GetComponent<DiscoveryObject>()))
             {
-                // Debug.Log("Find element in list");
+                Debug.Log("Find element in list");
                 DiscoveryObject element;
 
                 //Trova quel GameObject nella lista
                 element = discoveryObjects.Find(obj => obj.gameObject.GetInstanceID() == coll.gameObject.GetInstanceID());
-                if(element != null)
+                if (element != null)
                 {
                     Debug.Log("element.name = " + element.gameObject.name);
                 }
@@ -47,7 +48,7 @@ public class DiscoveryManager : MonoBehaviour
         discoveryObjects = GameObject.FindObjectsByType<DiscoveryObject>(FindObjectsSortMode.None).ToList();
         
         //Trovo il player gameobject
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
