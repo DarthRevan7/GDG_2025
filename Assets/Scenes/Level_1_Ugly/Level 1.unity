@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 0
   lives: 5
+  invulnerable: 0
 --- !u!4 &61237455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9193057984893875944, guid: afc03a816f59f6a4c8dd330a4b2f73e1, type: 3}
@@ -509,7 +510,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 31
+  m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

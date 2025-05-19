@@ -13,7 +13,12 @@ public class EnemyAIBase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerData>().lives--;
+            PlayerData pd = other.gameObject.GetComponent<PlayerData>();
+            //If the player is not invulnerable (Skill Calma)
+            if (!pd.invulnerable)
+            {
+                pd.lives--;
+            }
         }
         else if (other.gameObject.GetComponent<Scream>() != null)
         {
