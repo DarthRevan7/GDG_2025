@@ -36,7 +36,7 @@ public class GameUIManager : MonoBehaviour
 
         moneyText.text = "$$$$$: " + pd.money.ToString();
 
-        if (levelManager.levelWon)
+        if(levelManager.levelWon)
         {
             winPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;

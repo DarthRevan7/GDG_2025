@@ -43,6 +43,7 @@ public class EnemyAIBase : MonoBehaviour
     private void CalculateDirection()
     {
         direction = player.position - transform.position;
+        direction.y = 0.0f;
         followingPlayer = direction.magnitude <= aggroRange;
     }
 
