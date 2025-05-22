@@ -8,7 +8,7 @@ public class CollectableObject : MonoBehaviour
         MONEY, LIFE
     }
 
-    [SerializeField] private ObjectType objectType;
+    public ObjectType objectType;
 
 
     // Update is called once per frame
