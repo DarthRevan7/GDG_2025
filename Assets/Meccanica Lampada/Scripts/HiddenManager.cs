@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//Manager per Hidden Objects.
 public class HiddenManager : MonoBehaviour
 {
 
@@ -14,25 +15,25 @@ public class HiddenManager : MonoBehaviour
     private void DiscoveryMode()
     {
         //Se non è attiva la modalità di scoperta, allora ritorno.
-        if(!player.GetComponent<LampSkill>().localLightOn)
+        if (!player.GetComponent<LampSkill>().localLightOn)
             return;
 
         LampSkill inputBase = player.GetComponent<LampSkill>();
         //Casto una sfera per capire che oggetti trovo nel raggio del punto luce
         Collider[] colliders = Physics.OverlapSphere(player.position, inputBase.localLightRadius);
-        Debug.Log("collider.Count = " + colliders.Length.ToString());
-        
-        foreach(Collider coll in colliders)
+        // Debug.Log("collider.Count = " + colliders.Length.ToString());
+
+        foreach (Collider coll in colliders)
         {
-            Debug.Log("Obj: " + coll.gameObject.name);
-            if(hiddenObjects.Contains(coll.gameObject.GetComponent<HiddenObject>()))
+            // Debug.Log("Obj: " + coll.gameObject.name);
+            if (hiddenObjects.Contains(coll.gameObject.GetComponent<HiddenObject>()))
             {
-                Debug.Log("Find element in list");
+                // Debug.Log("Find element in list");
                 HiddenObject element;
 
                 //Trova quel GameObject nella lista
                 element = hiddenObjects.Find(obj => obj.gameObject.GetInstanceID() == coll.gameObject.GetInstanceID());
-                if(element != null)
+                if (element != null)
                 {
                     Debug.Log("element.name = " + element.gameObject.name);
                 }
@@ -48,7 +49,7 @@ public class HiddenManager : MonoBehaviour
     {
         //Trovo gli oggetti da nascondere e li metto in una lista
         hiddenObjects = GameObject.FindObjectsByType<HiddenObject>(FindObjectsSortMode.None).ToList<HiddenObject>();
-        
+
         //Trovo il player gameobject
         player = GameObject.FindWithTag("Player").transform;
     }
@@ -56,7 +57,7 @@ public class HiddenManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

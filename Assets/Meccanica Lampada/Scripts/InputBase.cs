@@ -5,9 +5,9 @@ public class InputBase : MonoBehaviour
 {
     //Movimento
     public Vector3 movementVector;
-    [SerializeField] private float movementSpeed = 5f, rotationSpeed = 20f;
-    [SerializeField] private KeyCode forward = KeyCode.W, backward = KeyCode.S, right = KeyCode.D, left = KeyCode.A;
-    [SerializeField] private KeyCode leftRotation = KeyCode.Q, rightRotation = KeyCode.E;
+    [SerializeField] private float movementSpeed = 5f, rotationSpeed = 100f;
+    [SerializeField] private KeyCode forward = KeyCode.W, backward = KeyCode.S, right = KeyCode.E, left = KeyCode.Q;
+    [SerializeField] private KeyCode leftRotation = KeyCode.A, rightRotation = KeyCode.D;
 
     
 

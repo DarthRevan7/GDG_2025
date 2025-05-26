@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0b027dcde143c8b4ea2eedbec6afe4aa
+  - enabled: 0
+    path: Assets/Assets_Team/Export/scene/Demo.unity
+    guid: 0639926cf54daae4396e0dd52ebadfcf
   - enabled: 1
-    path: Assets/Assets_Team/Export_Conc_1/TrueExport/Scenes/night-scene.unity
-    guid: 2ada6f062819f0a4b9b1fa6900a6d89f
+    path: Assets/Scenes/Level_1_Ugly/Level 1.unity
+    guid: 41adcf0c8d8dce04ebfb544dfcf4d99f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

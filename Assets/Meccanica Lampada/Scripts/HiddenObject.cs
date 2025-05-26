@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Un oggetto nascosto che può essere visto solo se si trova nel raggio della Skill di Luce
 public class HiddenObject : MonoBehaviour
 {
     [SerializeField] private Material originalMaterial, trasparentMaterial;
@@ -19,7 +20,7 @@ public class HiddenObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameObject.FindAnyObjectByType<LampSkill>().localLightOn)
+        if (!GameObject.FindAnyObjectByType<LampSkill>().localLightOn)
         {
             ChangeMaterial(false);
         }
@@ -28,10 +29,10 @@ public class HiddenObject : MonoBehaviour
 
     public void ChangeMaterial(bool mode)
     {
-        if(!mode)
+        if (!mode)
         {
             GetComponent<MeshRenderer>().material = trasparentMaterial;
-            
+
         }
         else
         {

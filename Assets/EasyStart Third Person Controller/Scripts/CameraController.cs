@@ -54,15 +54,15 @@ public class CameraController : MonoBehaviour
         transform.position = player.position + new Vector3(0, offsetDistanceY, 0);
 
         // Set camera zoom when mouse wheel is scrolled
-        if( canZoom && Input.GetAxis("Mouse ScrollWheel") != 0 )
+        if (canZoom && Input.GetAxis("Mouse ScrollWheel") != 0)
             Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * sensitivity * 2;
         // You can use Mathf.Clamp to set limits on the field of view
 
         // Checker for right click to move camera
-        if ( clickToMoveCamera )
+        if (clickToMoveCamera)
             if (Input.GetAxisRaw("Fire2") == 0)
                 return;
-            
+
         // Calculate new position
         mouseX += Input.GetAxis("Mouse X") * sensitivity;
         mouseY += Input.GetAxis("Mouse Y") * sensitivity;
@@ -70,6 +70,7 @@ public class CameraController : MonoBehaviour
         mouseY = Mathf.Clamp(mouseY, cameraLimit.x, cameraLimit.y);
 
         transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
+        player.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
 
     }
 }
