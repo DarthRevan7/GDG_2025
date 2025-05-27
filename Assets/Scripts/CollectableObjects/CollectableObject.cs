@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class CollectableObject : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public enum ObjectType
     {
-        
+        MONEY, LIFE
     }
+
+    public ObjectType objectType;
+
 
     // Update is called once per frame
     void Update()
@@ -21,17 +24,28 @@ public class CollectableObject : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player") {
-            GameObject.FindAnyObjectByType<PlayerData>().money++;
+            if (objectType == ObjectType.MONEY)
+            {
+                GameObject.FindAnyObjectByType<PlayerData>().money++;
+            }
+            else if (objectType == ObjectType.LIFE)
+            {
+                GameObject.FindAnyObjectByType<PlayerData>().lives++;
+            }
             Destroy(gameObject);
-
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player") {
-            GameObject.FindAnyObjectByType<PlayerData>().money++;
+        if (objectType == ObjectType.MONEY)
+            {
+                GameObject.FindAnyObjectByType<PlayerData>().money++;
+            }
+            else if (objectType == ObjectType.LIFE)
+            {
+                GameObject.FindAnyObjectByType<PlayerData>().lives++;
+            }
             Destroy(gameObject);
-        }
     }
 }
