@@ -8,19 +8,18 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Props
-  m_Shader: {fileID: 4800000, guid: 61e53729ad706d049b12a441f328fe34, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _EMISSION
-  - _GLOSSINESS_FROM_BASE_ALPHA
-  - _SPECULAR_COLOR
-  m_LightmapFlags: 1
+  m_ValidKeywords:
+  - _SPECULARHIGHLIGHTS_OFF
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -103,12 +102,16 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Emission: 2
+    - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossinessSource: 0
@@ -120,7 +123,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 0.024
-    - _Smoothness: 0.024
+    - _Smoothness: 0
     - _SmoothnessSource: 1
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
@@ -129,10 +132,11 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _UVSec: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.38970584, g: 0.38970584, b: 0.38970584, a: 0.024}
-    - _Color: {r: 0.38970584, g: 0.38970584, b: 0.38970584, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Emission: {r: 0.2794118, g: 0.2794118, b: 0.2794118, a: 0}
     - _EmissionColor: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 0}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
