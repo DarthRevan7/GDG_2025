@@ -34,6 +34,7 @@ AudioMixerController:
   - guids:
     - af6d1d4948aa6ab448e7a8c447af0f5e
     - 8b1f2ac1237f49f44af6bd7884e21fda
+    - 04c40f1c8ec4e0c4bbc8e65bca245049
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -48,6 +49,7 @@ AudioMixerGroupController:
   m_GroupID: af6d1d4948aa6ab448e7a8c447af0f5e
   m_Children:
   - {fileID: 2108640404298155824}
+  - {fileID: 5269550822915929481}
   m_Volume: f7adf81016e35d4428a01001c7040fc5
   m_Pitch: 4e92c09ed15f7024e93646ba5b7d7868
   m_Send: 00000000000000000000000000000000
@@ -80,7 +82,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 85ade514f23db6149b970b873ea9ae41
-  m_FloatValues: {}
+  m_FloatValues:
+    64ed808188ab1be46af79196bbe76723: -3
   m_TransitionOverrides: {}
 --- !u!243 &2108640404298155824
 AudioMixerGroupController:
@@ -101,3 +104,36 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &5269550822915929481
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tornados
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 04c40f1c8ec4e0c4bbc8e65bca245049
+  m_Children: []
+  m_Volume: 64ed808188ab1be46af79196bbe76723
+  m_Pitch: 2ff05fb383708ea4dbd4cc9c04ef99fd
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5888023238215956491}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &5888023238215956491
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 7c311687432d55345a875bf3f7ab3069
+  m_EffectName: Attenuation
+  m_MixLevel: 494bddbf4f4e37e46972ca9009ed1702
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
