@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlatformFollower : MonoBehaviour
 {
-    private CharacterController controller;
+    private Rigidbody rb;
     private Transform platformTransform;
     private Vector3 lastPlatformPosition;
     private bool isOnPlatform = false;
@@ -12,20 +12,30 @@ public class PlatformFollower : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate; // migliora il movimento con piattaforme
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter(Collision collision)
     {
-        if (hit.collider.CompareTag("MovingPlatform"))
+        if (collision.collider.CompareTag("MovingPlatform"))
         {
-            platformTransform = hit.collider.transform;
+            platformTransform = collision.collider.transform;
             lastPlatformPosition = platformTransform.position;
             isOnPlatform = true;
         }
     }
 
-    void Update()
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("MovingPlatform"))
+        {
+            platformTransform = null;
+            isOnPlatform = false;
+        }
+    }
+
+    void FixedUpdate()
     {
         FollowPlatform();
     }
@@ -34,23 +44,14 @@ public class PlatformFollower : MonoBehaviour
     {
         if (isOnPlatform && platformTransform != null)
         {
-            // Calcola delta movimento della piattaforma
             Vector3 platformDelta = platformTransform.position - lastPlatformPosition;
 
             if (platformDelta != Vector3.zero)
             {
-                controller.Move(platformDelta);
+                rb.MovePosition(rb.position + platformDelta);
             }
 
             lastPlatformPosition = platformTransform.position;
-
-            // 👇 Verifica se il personaggio è ancora sopra la piattaforma
-            Ray ray = new Ray(transform.position + Vector3.up * 0.1f, Vector3.down);
-            if (!Physics.Raycast(ray, out RaycastHit hit, 0.5f) || !hit.collider.CompareTag("MovingPlatform"))
-            {
-                platformTransform = null;
-                isOnPlatform = false;
-            }
         }
     }
 }

@@ -5,13 +5,16 @@ public class PlayerRespawn : MonoBehaviour
     public Transform respawnPoint;
     public float fallThreshold = -10f;
 
-    private CharacterController controller;
-    private PlayerData playerData; // <--- aggiunto
+    private Rigidbody rb;
+    private PlayerData playerData;
+
+    private CameraController cameraController;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        playerData = GetComponent<PlayerData>(); // <--- aggiunto
+        rb = GetComponent<Rigidbody>();
+        playerData = GetComponent<PlayerData>();
+        cameraController = FindObjectOfType<CameraController>();
     }
 
     void Update()
@@ -24,23 +27,30 @@ public class PlayerRespawn : MonoBehaviour
 
     void Respawn()
     {
-        // Diminuire la vita solo se non è già 0
         if (playerData != null && playerData.lives > 0)
         {
             playerData.lives--;
             Debug.Log("Vita persa! Vite rimanenti: " + playerData.lives);
         }
 
-        // Respawn del personaggio
-        controller.enabled = false;
-        transform.position = respawnPoint.position;
-        controller.enabled = true;
+        // Ferma completamente il movimento del rigidbody
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
-        // Se vuoi, qui puoi anche controllare se il player ha finito le vite:
+        // Respawna il personaggio
+        transform.position = respawnPoint.position;
+        transform.rotation = respawnPoint.rotation;
+
+        // Resetta eventuale movimento (es. animazioni, input)
+        if (cameraController != null)
+        {
+            cameraController.ResetTarget(transform); // serve che CameraController abbia questo metodo
+        }
+
         if (playerData != null && playerData.lives <= 0)
         {
             Debug.Log("Game Over!");
-            // Puoi aggiungere qui una schermata di game over, disabilitare controlli, ecc.
+            // Disabilita controlli qui se vuoi
         }
     }
 }

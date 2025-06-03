@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class MovingPlatform : MonoBehaviour
 {
     public enum MovementType
@@ -20,31 +21,37 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 startPosition;
     private int currentPathIndex = 0;
-    private bool movingForwardOnPath = true;
+
+    private Rigidbody rb;
 
     void Start()
     {
         startPosition = transform.position;
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true; // Importante!
+
         if (movementType == MovementType.Path && (pathPoints == null || pathPoints.Length == 0))
         {
-            Debug.LogWarning("Path movement selected ma pathPoints non assegnati o vuoti.");
+            Debug.LogWarning("Path movement selezionato ma pathPoints non assegnati o vuoti.");
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        Vector3 targetPosition = transform.position;
+
         switch (movementType)
         {
             case MovementType.PingPong:
                 {
                     float moveAmount = Mathf.PingPong(Time.time * speed, distance);
-                    transform.position = startPosition + direction.normalized * moveAmount;
+                    targetPosition = startPosition + direction.normalized * moveAmount;
                     break;
                 }
             case MovementType.Loop:
                 {
                     float moveAmount = (Time.time * speed) % distance;
-                    transform.position = startPosition + direction.normalized * moveAmount;
+                    targetPosition = startPosition + direction.normalized * moveAmount;
                     break;
                 }
             case MovementType.Path:
@@ -52,20 +59,18 @@ public class MovingPlatform : MonoBehaviour
                     if (pathPoints == null || pathPoints.Length == 0) return;
 
                     Vector3 target = pathPoints[currentPathIndex].position;
-                    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                    targetPosition = Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime);
 
                     if (Vector3.Distance(transform.position, target) < 0.01f)
                     {
                         currentPathIndex++;
-
                         if (currentPathIndex >= pathPoints.Length)
-                        {
-                            currentPathIndex = 0; // Ricomincia da capo (loop)
-                        }
+                            currentPathIndex = 0;
                     }
                     break;
                 }
         }
+
+        rb.MovePosition(targetPosition);
     }
 }
-
