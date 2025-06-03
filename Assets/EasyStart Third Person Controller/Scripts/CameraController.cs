@@ -73,4 +73,10 @@ public class CameraController : MonoBehaviour
         player.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
 
     }
+
+    public void ResetTarget(Transform newTarget)
+    {
+    player = newTarget;
+    }
+
 }
