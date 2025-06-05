@@ -29,8 +29,10 @@ public class ScreamSkill : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("attack"); // attiva l'animazione
 
+            SpawnScreamPrefab();
             canScream = false;
             StartCoroutine(ResetCooldown());
+            
         }
     }
 
